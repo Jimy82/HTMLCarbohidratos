@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alimentos</title>
+	<script>
+		function mostrarAlimentos() {
+			// Cargar el archivo XML
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					// Parsear el archivo XML
+					var xmlDoc = this.responseXML;
+					var alimentos = xmlDoc.getElementsByTagName("alimento");
+					var listaAlimentos = "";
+					// Recorrer todos los alimentos y agregarlos a la lista
+					for (var i = 0; i < alimentos.length; i++) {
+						var nombre = alimentos[i].getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
+						listaAlimentos += "<li>" + nombre + "</li>";
+					}
+					// Mostrar la lista de alimentos
+					document.getElementById("lista-alimentos").innerHTML = listaAlimentos;
+					document.getElementById("lista-alimentos").style.display = "block";
+				}
+			};
+			xhttp.open("GET", "alimentos.xml", true);
+			xhttp.send();
+		}
+	</script>
+</head>
+<body>
+	<h1>Alimentos</h1>
+	<p>Seleccione un alimento:</p>
+	<!-- Botón para mostrar la lista de alimentos -->
+	<button onclick="mostrarAlimentos()">Mostrar alimentos</button>
+	<!-- Lista de alimentos oculta -->
+	<ul id="lista-alimentos" style="display:none"></ul>
+</body>
+</html>

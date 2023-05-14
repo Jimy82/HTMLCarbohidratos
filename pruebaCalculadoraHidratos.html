@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description" content="Tabla de Hidratos de carbono"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="shortcut icon" href="images.jpg"/>
+	<link rel="stylesheet" href="stylesheet.css"/>
+	<title>Buscador de Hidratos</title>
+</head>
+
+<body>
+	
+	<h1>Tabla de Hidratos</h1>
+	<table border="1">
+		<tr>
+			<th colspan="2">Tabla de Hidratos</th>
+		</tr>
+		<tr>
+			<th>Alimento</th>
+			<th>1 Racion de Hidratos</th>
+		</tr>
+		<tr>
+			<td>Churros</td>
+			<td>25g</td>
+		</tr>
+		<tr>
+			<td>Cacao en polvo</td>
+			<td>12g</td>
+		</tr>
+		<tr>
+			<td>Canelones con bechamel</td>
+			<td>100g</td>
+		</tr>
+		<tr>
+			<td>Croquetas</td>
+			<td>50g</td>
+		</tr>
+		<tr>
+			<td>Lasaña</td>
+			<td>100g</td>
+		</tr>
+		<tr>
+			<td>Pizza</td>
+			<td>40g</td>
+		</tr>
+	</table>
+	
+	<div>
+    <label for="alimento">Alimento:</label>
+    <input type="text" id="alimento" placeholder="Escriba el nombre del alimento">
+    <label for="gramos">Gramos:</label>
+    <input type="number" id="gramos" placeholder="Escriba la cantidad de gramos">
+    <button onclick="calcularHidratos()">Calcular</button>
+    <p id="resultado"></p>
+	</div>
+	
+	<script>
+    function calcularHidratos() {
+    // Obtener el valor del alimento y los gramos
+var alimento = document.getElementById("alimento").value;
+var gramos = document.getElementById("gramos").value;
+
+// Definir los hidratos y las raciones de cada alimento
+var tablaHidratos = {
+    "Churros": {racion: 25, hidratos: 1},
+    "Cacao en polvo": {racion: 12, hidratos: 1},
+    "Canelones con bechamel": {racion: 100, hidratos: 1},
+    "Croquetas": {racion: 50, hidratos: 1},
+    "Lasaña": {racion: 100, hidratos: 1},
+    "Pizza": {racion: 40, hidratos: 1},
+	"Tortilla de patata": {racion: 120, hidratos: 1},
+	"Palomitas": {racion: 20, hidratos: 1},
+	"Mermelada": {racion: 20, hidratos: 1},
+	"Donut": {racion: 23, hidratos: 1},
+	
+	
+};
+
+// Obtener los hidratos correspondientes al alimento seleccionado
+var hidratosPorRacion = tablaHidratos[alimento].hidratos;
+var gramosPorRacion = tablaHidratos[alimento].racion;
+
+// Calcular los hidratos para los gramos dados
+var cantidadHidratos = (gramos * hidratosPorRacion) / gramosPorRacion;
+
+// Mostrar el resultado
+alert("Los " + gramos + " gramos de " + alimento + " contienen " + cantidadHidratos.toFixed(2) + " gramos de hidratos de carbono.");
+
+
+    
+    // Mostrar el resultado
+    document.getElementById("resultado").innerHTML = "Los " + gramos + " gramos de " + alimento + " contienen " + resultado + " gramos de hidratos de carbono.";
+}
+
+	</script>
+
+
+	
+</body>
+</html>
